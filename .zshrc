@@ -5,6 +5,6 @@ export HISTFILE=/dev/null
 export CLICOLOR=1
 
 ### pure theme
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
+# fpath+=$HOME/.zsh/pure
+# autoload -U promptinit; promptinit
+# prompt pure
