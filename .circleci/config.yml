@@ -1,9 +1,13 @@
 version: 2.1
 testvars: &testvars
+  environment:
+    BASH_ENV: local.env
   steps:
     - run:
         command: echo 'export ARM_VAR="${TEST_ARM_VAR}"' >> $BASH_ENV
 prodvars: &prodvars
+  environment:
+    BASH_ENV: local.env
   steps:
     - run:
         command: echo 'export ARM_VAR="${PROD_ARM_VAR}"' >> $BASH_ENV
