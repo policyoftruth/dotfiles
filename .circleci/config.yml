@@ -1,21 +1,35 @@
 version: 2.1
-defaults: &defaults
-  working_directory: ~/dotfiles
-  environment:
-    TEST_VAR: $MY_FIRST_SECRET
+testvars: &testvars
+  steps:
+    - run:
+        command: echo 'export ARM_VAR="${TEST_ARM_VAR}"' >> $BASH_ENV
+prodvars: &prodvars
+  steps:
+    - run:
+        command: echo 'export ARM_VAR="${PROD_ARM_VAR}"' >> $BASH_ENV
 jobs:
-  say-hello:
-    <<: *defaults
+  say-hello-test:
     docker:
       - image: cimg/base:stable
+    <<: *testvars
     steps:
       - checkout
       - run:
-          name: show vars
-          command: |
-            echo $MY_FIRST_SECRET
-            echo $TEST_VAR
+          name: show test vars
+          command: echo ${ARM_VAR}
+  say-hello-prod:
+    docker:
+      - image: cimg/base:stable
+    <<: *prodvars
+    steps:
+      - checkout
+      - run:
+          name: show prod vars
+          command: echo ${ARM_VAR}
 workflows:
-  say-hello-workflow:
+  say-hello-test-flow:
     jobs:
-      - say-hello
+      - say-hello-test
+  say-hello-prod-flow:
+    jobs:
+      - say-hello-prod
