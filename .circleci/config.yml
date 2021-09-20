@@ -4,12 +4,14 @@ testvars: &testvars
     BASH_ENV: local.env
   steps:
     - run:
+        name: set test var
         command: echo 'export ARM_VAR="${TEST_ARM_VAR}"' >> $BASH_ENV
 prodvars: &prodvars
   environment:
     BASH_ENV: local.env
   steps:
     - run:
+        name: set prod bar
         command: echo 'export ARM_VAR="${PROD_ARM_VAR}"' >> $BASH_ENV
 jobs:
   say-hello-test:
