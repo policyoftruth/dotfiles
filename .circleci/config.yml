@@ -10,12 +10,12 @@ defaults: &defaults
 test: &test
   steps:
     - run:
-        command: echo "export ARM_VAR="${TEST_ARM_VAR}" >> $BASH_ENV
+        command: echo "export ARM_VAR=${TEST_ARM_VAR}" >> $BASH_ENV
 
 prod: &prod
   steps:
     - run:
-        command: echo "export ARM_VAR="${PROD_ARM_VAR}" >> $BASH_ENV
+        command: echo "export ARM_VAR=${PROD_ARM_VAR}" >> $BASH_ENV
 
 jobs:
   say-hello-test:
