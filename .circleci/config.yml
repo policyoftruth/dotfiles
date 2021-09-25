@@ -30,7 +30,7 @@ jobs:
           command: echo 'export ARM_VAR=${TEST_ARM_VAR}' >> $BASH_ENV
       - run:
           name: Show Test Message
-          command: echo ${ARM_VAR}
+          command: cat local.env
   say-hello-prod:
     <<: *defaults
     steps:
@@ -41,7 +41,7 @@ jobs:
           command: echo 'export ARM_VAR=${PROD_ARM_VAR}' >> $BASH_ENV
       - run:
           name: Show Prod Message
-          command: echo ${ARM_VAR}
+          command: cat local.env
 
 workflows:
   say-hello-flow:
