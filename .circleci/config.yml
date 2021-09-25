@@ -10,11 +10,13 @@ defaults: &defaults
 test: &test
   steps:
     - run:
+        name: Assign Test Variable Export
         command: echo 'export ARM_VAR=${TEST_ARM_VAR}' >> $BASH_ENV
 
 prod: &prod
   steps:
     - run:
+        name: Assign Prod Variable Export
         command: echo 'export ARM_VAR=${PROD_ARM_VAR}' >> $BASH_ENV
 
 jobs:
