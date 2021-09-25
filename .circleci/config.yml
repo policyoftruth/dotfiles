@@ -25,7 +25,7 @@ jobs:
           name: Show Prod Message
           command: |
             export ARM_VAR=${PROD_ARM_VAR}
-            python3 showstuff.py'
+            python3 showstuff.py
 
 workflows:
   say-hello-flow:
