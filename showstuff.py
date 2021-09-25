@@ -1,3 +1,4 @@
 import os
 
-print(os.environ['ARM_VAR'])
+value = (os.environ['ARM_VAR'])
+print(value)
