@@ -2,22 +2,8 @@ version: 2.1
 
 defaults: &defaults
   working_directory: ~/dotfiles
-  environment:
-    BASH_ENV: local.env
   docker:
     - image: cimg/base:stable
-
-test: &test
-  steps:
-    - run:
-        name: Assign Test Variable Export
-        command: echo 'export ARM_VAR=${TEST_ARM_VAR}' >> $BASH_ENV
-
-prod: &prod
-  steps:
-    - run:
-        name: Assign Prod Variable Export
-        command: echo 'export ARM_VAR=${PROD_ARM_VAR}' >> $BASH_ENV
 
 jobs:
   say-hello-test:
@@ -27,7 +13,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Assign Test Variable Export
-          command: echo 'export ARM_VAR=${TEST_ARM_VAR}' >> $BASH_ENV
+          command: export ARM_VAR=${TEST_ARM_VAR}
       - run:
           name: Show Test Message
           command: python3 showstuff.py
@@ -38,7 +24,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Assign Prod Variable Export
-          command: echo 'export ARM_VAR=${PROD_ARM_VAR}' >> $BASH_ENV
+          command: export ARM_VAR=${PROD_ARM_VAR}
       - run:
           name: Show Prod Message
           command: python3 showstuff.py
