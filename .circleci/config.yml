@@ -12,22 +12,20 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Assign Test Variable Export
-          command: 'export ARM_VAR=${TEST_ARM_VAR}'
-      - run:
           name: Show Test Message
-          command: 'python3 showstuff.py'
+          command: |
+            export ARM_VAR=${TEST_ARM_VAR}
+            python3 showstuff.py
   say-hello-prod:
     <<: *defaults
     steps:
       - checkout
       - setup_remote_docker
       - run:
-          name: Assign Prod Variable Export
-          command: 'export ARM_VAR=${PROD_ARM_VAR}'
-      - run:
           name: Show Prod Message
-          command: 'python3 showstuff.py'
+          command: |
+            export ARM_VAR=${PROD_ARM_VAR}
+            python3 showstuff.py'
 
 workflows:
   say-hello-flow:
