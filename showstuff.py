@@ -7,3 +7,5 @@ value_list[1] = "^"
 print("The value is:")
 print(value, file = sys.stderr)
 print("".join(value_list))
+print("HelloProd")
+print("HelloProd1")
